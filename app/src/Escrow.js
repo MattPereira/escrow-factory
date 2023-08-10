@@ -31,7 +31,7 @@ export default function Escrow({
     buttonOrMessage = (
       <button
         type="button"
-        className="border-2 border-white rounded-md px-5 py-2 text-white font-semibold font-gothic text-lg hover:bg-white hover:text-neutral-800 transition duration-300 ease-in-out"
+        className="border-2 border-white rounded-md px-5 py-2 text-white font-semibold font-gothic text-lg hover:bg-white hover:text-neutral-800 transition duration-300 ease-in-out w-36"
         id={address}
         onClick={(e) => {
           e.preventDefault();

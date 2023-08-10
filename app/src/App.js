@@ -116,7 +116,7 @@ function App() {
 
   return (
     <div className="h-screen bg-swell-blue">
-      <main className="p-10">
+      <main className="p-5 md:p-10">
         <h1 className="text-center mb-10 text-6xl text-white font-cubano">
           Escrow Factory
         </h1>
@@ -176,7 +176,7 @@ function App() {
             <div className="flex justify-end pt-3">
               <button
                 type="button"
-                className="border-2 border-white rounded-md px-5 py-2 text-white font-semibold font-gothic text-lg hover:bg-white hover:text-neutral-800 transition duration-300 ease-in-out"
+                className="border-2 border-white rounded-md px-5 py-2 text-white font-semibold font-gothic text-lg hover:bg-white hover:text-neutral-800 transition duration-300 ease-in-out w-36"
                 id="deploy"
                 onClick={(e) => {
                   e.preventDefault();
@@ -184,9 +184,15 @@ function App() {
                   newContract();
                 }}
               >
-                Deploy
+                Deploy*
               </button>
             </div>
+          </div>
+          <div className="mb-5">
+            <p className="text-white text-xl">
+              *Escrow contract will be deployed to the network chosen by your
+              browser wallet
+            </p>
           </div>
 
           <div className="border border-gray-700 rounded-xl p-5 w-full bg-neutral-800 p-10">
