@@ -10,8 +10,12 @@ export default function Escrow({
   deployer,
   isPending,
   isFailed,
+  network,
 }) {
   const eth = ethers.utils.formatEther(value);
+
+  const abbreviate = (address) =>
+    address.slice(0, 5) + "..." + address.slice(-4);
 
   let buttonOrMessage;
 
@@ -38,37 +42,68 @@ export default function Escrow({
       </button>
     );
   }
+
+  let etherscanUrl;
+  if (network.name === "homestead") {
+    etherscanUrl = `https://etherscan.io/address/${address}`;
+  } else {
+    etherscanUrl = `https://${network.name}.etherscan.io/address/${address}`;
+  }
+
   return (
-    <div className="text-white text-lg">
-      <ul>
-        <li>
+    <div className="text-white text-xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="mb-2">
           <div className="font-semibold font-gothic"> Contract Address </div>
-          <div> {address} </div>
-        </li>
-        <li>
+          <div>
+            <a href={etherscanUrl} className="underline text-sky-300">
+              {abbreviate(address)}
+            </a>{" "}
+          </div>
+        </div>
+        <div className="mb-2">
           <div className="font-semibold font-gothic"> Deployer Address </div>
-          <div> {deployer} </div>
-        </li>
-        <li>
+          <div>
+            {" "}
+            <a href={etherscanUrl} className="underline text-sky-300">
+              {abbreviate(deployer)}
+            </a>{" "}
+          </div>
+        </div>
+        <div className="mb-2">
           <div className="font-semibold font-gothic">
             {" "}
             Arbiter Address (EOA){" "}
           </div>
-          <div> {arbiter} </div>
-        </li>
-        <li>
+          <div>
+            {" "}
+            <a href={etherscanUrl} className="underline text-sky-300">
+              {abbreviate(arbiter)}
+            </a>{" "}
+          </div>
+        </div>
+        <div className="mb-2">
           <div className="font-semibold font-gothic">
             {" "}
             Beneficiary Address (EOA)
           </div>
-          <div> {beneficiary} </div>
-        </li>
-        <li>
+          <div>
+            {" "}
+            <a href={etherscanUrl} className="underline text-sky-300">
+              {abbreviate(beneficiary)}
+            </a>{" "}
+          </div>
+        </div>
+        <div className="mb-2">
+          <div className="font-semibold font-gothic"> Network </div>
+          <div> {network.name} </div>
+        </div>
+        <div className="mb-2">
           <div className="font-semibold font-gothic"> Value </div>
           <div> {eth} ETH </div>
-        </li>
-        <div className="text-end">{buttonOrMessage}</div>
-      </ul>
+        </div>
+      </div>
+      <div className="text-end">{buttonOrMessage}</div>
     </div>
   );
 }

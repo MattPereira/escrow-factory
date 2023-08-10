@@ -97,6 +97,7 @@ function App() {
     const escrowContract = await deploy(signer, arbiter, beneficiary, value);
 
     const escrow = {
+      network: await escrowContract.provider.getNetwork(),
       address: escrowContract.address,
       deployer: await signer.getAddress(),
       arbiter,
@@ -189,7 +190,7 @@ function App() {
           </div>
 
           <div className="border border-gray-700 rounded-xl p-5 w-full bg-neutral-800 p-10">
-            <h1 className="text-center text-4xl mb-2 text-white font-cubano">
+            <h1 className="text-center text-4xl mb-5 text-white font-cubano">
               {" "}
               Deployed Contracts{" "}
             </h1>
