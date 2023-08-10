@@ -62,7 +62,10 @@ export default function Escrow({
           </div>
         </div>
         <div className="mb-2">
-          <div className="font-semibold font-gothic"> Deployer Address </div>
+          <div className="font-semibold font-gothic">
+            {" "}
+            Deployer Address (EOA){" "}
+          </div>
           <div>
             {" "}
             <a href={etherscanUrl} className="underline text-sky-300">
